@@ -50,6 +50,7 @@ class MarkdownStyleSheet {
     this.codeblockPadding,
     this.codeblockDecoration,
     this.horizontalRuleDecoration,
+    this.horizontalRulePadding,
     this.textAlign = WrapAlignment.start,
     this.h1Align = WrapAlignment.start,
     this.h2Align = WrapAlignment.start,
@@ -71,7 +72,9 @@ class MarkdownStyleSheet {
         textScaler = textScaler ??
             // Internally, only textScaler is used, so convert the scale factor
             // to a linear scaler.
-            (textScaleFactor == null ? null : TextScaler.linear(textScaleFactor)),
+            (textScaleFactor == null
+                ? null
+                : TextScaler.linear(textScaleFactor)),
         _styles = <String, TextStyle?>{
           'a': a,
           'p': p,
@@ -105,7 +108,6 @@ class MarkdownStyleSheet {
       code: theme.textTheme.bodyMedium!.copyWith(
         backgroundColor: theme.cardTheme.color,
         fontFamily: 'monospace',
-        fontSize: theme.textTheme.bodyMedium!.fontSize! * 0.85,
       ),
       h1: theme.textTheme.headlineSmall,
       h1Padding: EdgeInsets.zero,
@@ -159,6 +161,7 @@ class MarkdownStyleSheet {
           ),
         ),
       ),
+      horizontalRulePadding: EdgeInsets.zero,
     );
   }
 
@@ -167,13 +170,14 @@ class MarkdownStyleSheet {
     assert(theme.textTheme.textStyle.fontSize != null);
     return MarkdownStyleSheet(
       a: theme.textTheme.textStyle.copyWith(
-        color: theme.brightness == Brightness.dark ? CupertinoColors.link.darkColor : CupertinoColors.link.color,
+        color: theme.brightness == Brightness.dark
+            ? CupertinoColors.link.darkColor
+            : CupertinoColors.link.color,
       ),
       p: theme.textTheme.textStyle,
       pPadding: EdgeInsets.zero,
       code: theme.textTheme.textStyle.copyWith(
         fontFamily: 'monospace',
-        fontSize: theme.textTheme.textStyle.fontSize! * 0.85,
       ),
       h1: theme.textTheme.textStyle.copyWith(
         fontWeight: FontWeight.w500,
@@ -265,6 +269,7 @@ class MarkdownStyleSheet {
           ),
         ),
       ),
+      horizontalRulePadding: EdgeInsets.zero,
     );
   }
 
@@ -280,7 +285,6 @@ class MarkdownStyleSheet {
       code: theme.textTheme.bodyMedium!.copyWith(
         backgroundColor: theme.cardTheme.color,
         fontFamily: 'monospace',
-        fontSize: theme.textTheme.bodyMedium!.fontSize! * 0.85,
       ),
       h1: theme.textTheme.displayMedium,
       h1Padding: EdgeInsets.zero,
@@ -334,6 +338,7 @@ class MarkdownStyleSheet {
           ),
         ),
       ),
+      horizontalRulePadding: EdgeInsets.zero,
     );
   }
 
@@ -381,6 +386,7 @@ class MarkdownStyleSheet {
     EdgeInsets? codeblockPadding,
     Decoration? codeblockDecoration,
     Decoration? horizontalRuleDecoration,
+    EdgeInsets? horizontalRulePadding,
     WrapAlignment? textAlign,
     WrapAlignment? h1Align,
     WrapAlignment? h2Align,
@@ -402,8 +408,10 @@ class MarkdownStyleSheet {
     );
     // If either of textScaler or textScaleFactor is non-null, pass null for the
     // other instead of the previous value, since only one is allowed.
-    final TextScaler? newTextScaler = textScaler ?? (textScaleFactor == null ? this.textScaler : null);
-    final double? nextTextScaleFactor = textScaleFactor ?? (textScaler == null ? this.textScaleFactor : null);
+    final TextScaler? newTextScaler =
+        textScaler ?? (textScaleFactor == null ? this.textScaler : null);
+    final double? nextTextScaleFactor =
+        textScaleFactor ?? (textScaler == null ? this.textScaleFactor : null);
     return MarkdownStyleSheet(
       a: a ?? this.a,
       p: p ?? this.p,
@@ -440,12 +448,16 @@ class MarkdownStyleSheet {
       tableScrollbarThumbVisibility: tableScrollbarThumbVisibility,
       tableCellsPadding: tableCellsPadding ?? this.tableCellsPadding,
       tableCellsDecoration: tableCellsDecoration ?? this.tableCellsDecoration,
-      tableVerticalAlignment: tableVerticalAlignment ?? this.tableVerticalAlignment,
+      tableVerticalAlignment:
+          tableVerticalAlignment ?? this.tableVerticalAlignment,
       blockquotePadding: blockquotePadding ?? this.blockquotePadding,
       blockquoteDecoration: blockquoteDecoration ?? this.blockquoteDecoration,
       codeblockPadding: codeblockPadding ?? this.codeblockPadding,
       codeblockDecoration: codeblockDecoration ?? this.codeblockDecoration,
-      horizontalRuleDecoration: horizontalRuleDecoration ?? this.horizontalRuleDecoration,
+      horizontalRuleDecoration:
+          horizontalRuleDecoration ?? this.horizontalRuleDecoration,
+      horizontalRulePadding:
+          horizontalRulePadding ?? this.horizontalRulePadding,
       textAlign: textAlign ?? this.textAlign,
       h1Align: h1Align ?? this.h1Align,
       h2Align: h2Align ?? this.h2Align,
@@ -457,7 +469,8 @@ class MarkdownStyleSheet {
       orderedListAlign: orderedListAlign ?? this.orderedListAlign,
       blockquoteAlign: blockquoteAlign ?? this.blockquoteAlign,
       codeblockAlign: codeblockAlign ?? this.codeblockAlign,
-      superscriptFontFeatureTag: superscriptFontFeatureTag ?? this.superscriptFontFeatureTag,
+      superscriptFontFeatureTag:
+          superscriptFontFeatureTag ?? this.superscriptFontFeatureTag,
       textScaler: newTextScaler,
       textScaleFactor: nextTextScaleFactor,
     );
@@ -511,6 +524,7 @@ class MarkdownStyleSheet {
       codeblockPadding: other.codeblockPadding,
       codeblockDecoration: other.codeblockDecoration,
       horizontalRuleDecoration: other.horizontalRuleDecoration,
+      horizontalRulePadding: other.horizontalRulePadding,
       textAlign: other.textAlign,
       h1Align: other.h1Align,
       h2Align: other.h2Align,
@@ -655,6 +669,9 @@ class MarkdownStyleSheet {
   /// The decoration to use for `hr` elements.
   final Decoration? horizontalRuleDecoration;
 
+  /// The padding to use for `hr` elements.
+  final EdgeInsets? horizontalRulePadding;
+
   /// The [WrapAlignment] to use for normal text. Defaults to start.
   final WrapAlignment textAlign;
 
@@ -756,6 +773,7 @@ class MarkdownStyleSheet {
         other.codeblockPadding == codeblockPadding &&
         other.codeblockDecoration == codeblockDecoration &&
         other.horizontalRuleDecoration == horizontalRuleDecoration &&
+        other.horizontalRulePadding == horizontalRulePadding &&
         other.textAlign == textAlign &&
         other.h1Align == h1Align &&
         other.h2Align == h2Align &&
@@ -815,6 +833,7 @@ class MarkdownStyleSheet {
       codeblockPadding,
       codeblockDecoration,
       horizontalRuleDecoration,
+      horizontalRulePadding,
       textAlign,
       h1Align,
       h2Align,
