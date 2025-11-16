@@ -170,7 +170,8 @@ void defineTests() {
           );
 
           final Iterable<Widget> widgets = tester.allWidgets;
-          final Text text = widgets.firstWhere((Widget widget) => widget is Text) as Text;
+          final Text text =
+              widgets.firstWhere((Widget widget) => widget is Text) as Text;
 
           final TextSpan span = text.textSpan! as TextSpan;
           final List<InlineSpan>? children = span.children;
@@ -191,13 +192,15 @@ void defineTests() {
             boilerplate(
               MarkdownBody(
                 data: data,
-                styleSheet: MarkdownStyleSheet(superscriptFontFeatureTag: 'numr'),
+                styleSheet:
+                    MarkdownStyleSheet(superscriptFontFeatureTag: 'numr'),
               ),
             ),
           );
 
           final Iterable<Widget> widgets = tester.allWidgets;
-          final Text text = widgets.firstWhere((Widget widget) => widget is Text) as Text;
+          final Text text =
+              widgets.firstWhere((Widget widget) => widget is Text) as Text;
 
           final TextSpan span = text.textSpan! as TextSpan;
           final List<InlineSpan>? children = span.children;
@@ -223,7 +226,8 @@ void defineTests() {
           );
 
           final Iterable<Widget> widgets = tester.allWidgets;
-          final Text text = widgets.firstWhere((Widget widget) => widget is Text) as Text;
+          final Text text =
+              widgets.firstWhere((Widget widget) => widget is Text) as Text;
 
           final TextSpan span = text.textSpan! as TextSpan;
           final List<InlineSpan>? children = span.children;
@@ -252,14 +256,16 @@ void defineTests() {
           );
 
           final Iterable<Widget> widgets = tester.allWidgets;
-          final Text text = widgets.firstWhere((Widget widget) => widget is Text) as Text;
+          final Text text =
+              widgets.firstWhere((Widget widget) => widget is Text) as Text;
 
           final TextSpan span = text.textSpan! as TextSpan;
 
           final List<Type> gestureRecognizerTypes = <Type>[];
           span.visitChildren((InlineSpan inlineSpan) {
             if (inlineSpan is TextSpan) {
-              final TapGestureRecognizer? recognizer = inlineSpan.recognizer as TapGestureRecognizer?;
+              final TapGestureRecognizer? recognizer =
+                  inlineSpan.recognizer as TapGestureRecognizer?;
               gestureRecognizerTypes.add(recognizer?.runtimeType ?? Null);
               if (recognizer != null) {
                 recognizer.onTap!();

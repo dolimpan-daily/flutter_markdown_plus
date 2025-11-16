@@ -15,10 +15,13 @@ void defineTests() {
     testWidgets(
       'equality - Cupertino',
       (WidgetTester tester) async {
-        const CupertinoThemeData theme = CupertinoThemeData(brightness: Brightness.light);
+        const CupertinoThemeData theme =
+            CupertinoThemeData(brightness: Brightness.light);
 
-        final MarkdownStyleSheet style1 = MarkdownStyleSheet.fromCupertinoTheme(theme);
-        final MarkdownStyleSheet style2 = MarkdownStyleSheet.fromCupertinoTheme(theme);
+        final MarkdownStyleSheet style1 =
+            MarkdownStyleSheet.fromCupertinoTheme(theme);
+        final MarkdownStyleSheet style2 =
+            MarkdownStyleSheet.fromCupertinoTheme(theme);
         expect(style1, equals(style2));
         expect(style1.hashCode, equals(style2.hashCode));
       },
@@ -27,7 +30,8 @@ void defineTests() {
     testWidgets(
       'equality - Material',
       (WidgetTester tester) async {
-        final ThemeData theme = ThemeData.light().copyWith(textTheme: textTheme);
+        final ThemeData theme =
+            ThemeData.light().copyWith(textTheme: textTheme);
 
         final MarkdownStyleSheet style1 = MarkdownStyleSheet.fromTheme(theme);
         final MarkdownStyleSheet style2 = MarkdownStyleSheet.fromTheme(theme);
@@ -43,7 +47,8 @@ void defineTests() {
           brightness: Brightness.dark,
         );
 
-        final MarkdownStyleSheet style = MarkdownStyleSheet.fromCupertinoTheme(cTheme);
+        final MarkdownStyleSheet style =
+            MarkdownStyleSheet.fromCupertinoTheme(cTheme);
 
         // a
         expect(style.a!.color, CupertinoColors.link.darkColor);
@@ -54,7 +59,8 @@ void defineTests() {
 
         // code
         expect(style.code!.color, cTheme.textTheme.textStyle.color);
-        expect(style.code!.fontSize, cTheme.textTheme.textStyle.fontSize! * 0.85);
+        expect(
+            style.code!.fontSize, cTheme.textTheme.textStyle.fontSize! * 0.85);
         expect(style.code!.fontFamily, 'monospace');
 
         // H1
@@ -141,7 +147,8 @@ void defineTests() {
 
         // code
         expect(style.code!.color, theme.textTheme.bodyMedium!.color);
-        expect(style.code!.fontSize, theme.textTheme.bodyMedium!.fontSize! * 0.85);
+        expect(
+            style.code!.fontSize, theme.textTheme.bodyMedium!.fontSize! * 0.85);
         expect(style.code!.fontFamily, 'monospace');
         expect(style.code!.backgroundColor, theme.cardTheme.color);
 
@@ -196,7 +203,8 @@ void defineTests() {
     testWidgets(
       'merge 2 style sheets',
       (WidgetTester tester) async {
-        final ThemeData theme = ThemeData.light().copyWith(textTheme: textTheme);
+        final ThemeData theme =
+            ThemeData.light().copyWith(textTheme: textTheme);
         final MarkdownStyleSheet style1 = MarkdownStyleSheet.fromTheme(theme);
         final MarkdownStyleSheet style2 = MarkdownStyleSheet(
           p: const TextStyle(color: Colors.red),
@@ -231,10 +239,12 @@ void defineTests() {
     testWidgets(
       'apply 2 distinct style sheets',
       (WidgetTester tester) async {
-        final ThemeData theme = ThemeData.light().copyWith(textTheme: textTheme);
+        final ThemeData theme =
+            ThemeData.light().copyWith(textTheme: textTheme);
 
         final MarkdownStyleSheet style1 = MarkdownStyleSheet.fromTheme(theme);
-        final MarkdownStyleSheet style2 = MarkdownStyleSheet.largeFromTheme(theme);
+        final MarkdownStyleSheet style2 =
+            MarkdownStyleSheet.largeFromTheme(theme);
         expect(style1, isNot(style2));
 
         await tester.pumpWidget(
@@ -265,8 +275,9 @@ void defineTests() {
       'use stylesheet option listBulletPadding',
       (WidgetTester tester) async {
         const double paddingX = 20.0;
-        final MarkdownStyleSheet style =
-            MarkdownStyleSheet(listBulletPadding: const EdgeInsets.symmetric(horizontal: paddingX));
+        final MarkdownStyleSheet style = MarkdownStyleSheet(
+            listBulletPadding:
+                const EdgeInsets.symmetric(horizontal: paddingX));
 
         await tester.pumpWidget(
           boilerplate(
@@ -277,7 +288,8 @@ void defineTests() {
           ),
         );
 
-        final List<Padding> paddings = tester.widgetList<Padding>(find.byType(Padding)).toList();
+        final List<Padding> paddings =
+            tester.widgetList<Padding>(find.byType(Padding)).toList();
 
         expect(paddings.length, 3);
         expect(
@@ -336,7 +348,8 @@ void defineTests() {
           ),
         );
 
-        final List<Padding> paddings = tester.widgetList<Padding>(find.byType(Padding)).toList();
+        final List<Padding> paddings =
+            tester.widgetList<Padding>(find.byType(Padding)).toList();
 
         expect(paddings.length, 3);
         expect(
@@ -364,13 +377,15 @@ void defineTests() {
         await tester.pumpWidget(
           boilerplate(
             Markdown(
-              data: 'Test\n\n# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n',
+              data:
+                  'Test\n\n# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6\n',
               styleSheet: style,
             ),
           ),
         );
 
-        final List<Padding> paddings = tester.widgetList<Padding>(find.byType(Padding)).toList();
+        final List<Padding> paddings =
+            tester.widgetList<Padding>(find.byType(Padding)).toList();
 
         expect(paddings.length, 6);
         expect(

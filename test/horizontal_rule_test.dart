@@ -21,7 +21,14 @@ void defineTests() {
           find.byType(MarkdownBody),
           tester,
         );
-        expectWidgetTypes(widgets, <Type>[MarkdownBody, Container, DecoratedBox, Padding, LimitedBox, ConstrainedBox]);
+        expectWidgetTypes(widgets, <Type>[
+          MarkdownBody,
+          Container,
+          DecoratedBox,
+          Padding,
+          LimitedBox,
+          ConstrainedBox
+        ]);
       },
     );
 
@@ -35,7 +42,14 @@ void defineTests() {
           find.byType(MarkdownBody),
           tester,
         );
-        expectWidgetTypes(widgets, <Type>[MarkdownBody, Container, DecoratedBox, Padding, LimitedBox, ConstrainedBox]);
+        expectWidgetTypes(widgets, <Type>[
+          MarkdownBody,
+          Container,
+          DecoratedBox,
+          Padding,
+          LimitedBox,
+          ConstrainedBox
+        ]);
       },
     );
 
@@ -49,7 +63,14 @@ void defineTests() {
           find.byType(MarkdownBody),
           tester,
         );
-        expectWidgetTypes(widgets, <Type>[MarkdownBody, Container, DecoratedBox, Padding, LimitedBox, ConstrainedBox]);
+        expectWidgetTypes(widgets, <Type>[
+          MarkdownBody,
+          Container,
+          DecoratedBox,
+          Padding,
+          LimitedBox,
+          ConstrainedBox
+        ]);
       },
     );
 

@@ -65,11 +65,14 @@ void defineTests() {
           find.byType(DecoratedBox),
         );
         final Text quoteText = tester.widget(find.byType(Text));
-        final List<TextSpan> styledTextParts = (quoteText.textSpan! as TextSpan).children!.cast<TextSpan>();
+        final List<TextSpan> styledTextParts =
+            (quoteText.textSpan! as TextSpan).children!.cast<TextSpan>();
 
         expectTextStrings(
           widgets,
-          <String>['this is a link: Markdown guide and this is bold and italic'],
+          <String>[
+            'this is a link: Markdown guide and this is bold and italic'
+          ],
         );
         expect(
           (blockQuoteContainer.decoration as BoxDecoration).color,

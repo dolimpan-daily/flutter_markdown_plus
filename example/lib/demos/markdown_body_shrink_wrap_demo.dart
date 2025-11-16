@@ -30,7 +30,8 @@ This example demonstrates how `MarkdownBody`'s `shrinkWrap` property works.
   height.
 ''';
 
-class MarkdownBodyShrinkWrapDemo extends StatefulWidget implements MarkdownDemoWidget {
+class MarkdownBodyShrinkWrapDemo extends StatefulWidget
+    implements MarkdownDemoWidget {
   const MarkdownBodyShrinkWrapDemo({super.key});
 
   static const String _title = 'Shrink wrap demo';
@@ -49,10 +50,12 @@ class MarkdownBodyShrinkWrapDemo extends StatefulWidget implements MarkdownDemoW
   Future<String> get notes => Future<String>.value(_notes);
 
   @override
-  State<MarkdownBodyShrinkWrapDemo> createState() => _MarkdownBodyShrinkWrapDemoState();
+  State<MarkdownBodyShrinkWrapDemo> createState() =>
+      _MarkdownBodyShrinkWrapDemoState();
 }
 
-class _MarkdownBodyShrinkWrapDemoState extends State<MarkdownBodyShrinkWrapDemo> {
+class _MarkdownBodyShrinkWrapDemoState
+    extends State<MarkdownBodyShrinkWrapDemo> {
   bool _shrinkWrap = true;
 
   final Map<String, bool> _shrinkWrapMenuItems = <String, bool>{

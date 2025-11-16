@@ -144,7 +144,8 @@ is being preserved for reference purposes.
 This demo example is being preserved for reference purposes.
 """;
 
-class OriginalMarkdownDemo extends StatelessWidget implements MarkdownDemoWidget {
+class OriginalMarkdownDemo extends StatelessWidget
+    implements MarkdownDemoWidget {
   OriginalMarkdownDemo({super.key});
 
   static const String _title = 'Original Markdown Demo';
@@ -177,7 +178,8 @@ class OriginalMarkdownDemo extends StatelessWidget implements MarkdownDemoWidget
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.arrow_upward),
-        onPressed: () => controller.animateTo(0, duration: const Duration(seconds: 1), curve: Curves.easeOut),
+        onPressed: () => controller.animateTo(0,
+            duration: const Duration(seconds: 1), curve: Curves.easeOut),
       ),
     );
   }
